@@ -25,7 +25,7 @@ export const App = () => {
 
   return (
     <div>
-      <header>犬にかんするアプリ</header>
+      <header className="header">犬にかんするアプリ</header>
       <a href="https://dog.ceo/dog-api/">「犬の画像を表示するサイトです」</a>
       <img src={dogUrl}></img>
       <button onClick={handleFetch}>更新</button>
