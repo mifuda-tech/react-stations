@@ -21,10 +21,9 @@ export const Description = () => {
 
   return (
     <div>
-      <a href="https://dog.ceo/dog-api/">「犬の画像を表示するサイトです」</a>
+      <DogImage />
       <img src={dogUrl}></img>
       <button onClick={handleFetch}>更新</button>
-      <DogImage />
     </div>
   )
 }
