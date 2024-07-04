@@ -4,17 +4,20 @@ import DogImage from './Description'
 import BreedsSelect from './BreedsSelect'
 
 export const DogListContainer = () => {
-  const [breeds, setBreeds] = useState()
+  const [breeds, setBreeds] = useState(
+    'https://images.dog.ceo/breeds/terrier-tibetan/n02097474_7572.jpg',
+  )
 
   useEffect(() => {
-    fetch('https://dog.ceo/api/breeds/list/all')
-      .then(response => response.json())
-      .then(data => {
-        setBreeds(Object.keys(data.message))
-      }, [])
-  })
+    async function fetchBreeds() {
+      const response = await fetch('https://dog.ceo/api/breeds/list/all')
+      const data = await response.json()
+      setBreeds(Object.keys(data.message))
+    }
+    fetchBreeds()
+  }, [])
 
-  const [selectedBreed, setSelectedBreed] = useState('')
+  const [selectedBreed, setSelectedBreed] = useState()
 
   return (
     <div>

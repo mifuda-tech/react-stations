@@ -1,10 +1,9 @@
 // @ts-check
-import React, { useState, useEffect } from 'react'
 
-export const BreedsSelect = () => {
+export const BreedsSelect = ({ breeds, onSelectBreed }) => {
   return (
     <label>
-      Select a kind of dog:
+      Select what kind of dog:
       <select onChange={e => onSelectBreed(e.target.value)}>
         {breeds.map(breed => (
           <option key={breed} value={breed}>
