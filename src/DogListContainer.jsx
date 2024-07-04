@@ -1,6 +1,7 @@
 // @ts-check
 import React, { useState, useEffect } from 'react'
 import DogImage from './Description'
+import BreedsSelect from './BreedsSelect'
 
 export const DogListContainer = () => {
   const [breeds, setBreeds] = useState()
@@ -9,15 +10,16 @@ export const DogListContainer = () => {
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(response => response.json())
       .then(data => {
-        setBreeds(data.message)
+        setBreeds(Object.keys(data.message))
       }, [])
   })
+
+  const [selectedBreed, setSelectedBreed] = useState('')
 
   return (
     <div>
       <DogImage />
-      <img src={breeds}></img>
-      <button>更新</button>
+      <BreedsSelect breeds={breeds} onSelectBreed={setSelectedBreed} />
     </div>
   )
 }
